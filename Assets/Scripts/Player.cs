@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int level = 1;
+    public int health = 100;
+
     [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private int health = 100;
     [SerializeField] private float fallSpeed = -1.0f;
 
     private CharacterController characterController;

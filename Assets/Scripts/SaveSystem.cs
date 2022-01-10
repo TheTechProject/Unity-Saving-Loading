@@ -21,7 +21,13 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/player.sav";
         if (File.Exists(path))
         {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
 
+            PlayerData data = formatter.Deserialize(stream) as PlayerData;
+
+            return data;
+            stream.Close();
         }
         else
         {

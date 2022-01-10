@@ -56,6 +56,30 @@ public class Player : MonoBehaviour
         {
             health -= 10;
         }
+
+        GUI.Box(new Rect(10, 140, 100, 90), "Save Settings");
+
+        if(GUI.Button(new Rect(20, 170, 80, 20), "Save Player"))
+        {
+            SaveSystem.SavePlayer(this);
+        }
+
+        if(GUI.Button(new Rect(20, 200, 80, 20), "Load Player"))
+        {
+            PlayerData data = SaveSystem.LoadPlayer();
+
+            level = data.level;
+            health = data.health;
+
+            characterController.enabled = false;
+            Vector3 position;
+            position.x = data.position[0];
+            position.y = data.position[1];
+            position.z = data.position[2];
+
+            transform.position = position;
+            characterController.enabled = true;
+        }
     }
 
 }
